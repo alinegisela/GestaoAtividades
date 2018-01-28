@@ -24,10 +24,10 @@ public class ClasseTesteSistema {
         FachadaGerente fachGerente = new FachadaGerente(reposFuncionario, reposPonto, reposTarefa);
 
         try {
-            fachGerente.cadastrarFuncionario("fulano", null, "0001");
+            fachGerente.cadastrarFuncionario("fulano", null, "0001", "fulano");
             fachGerente.atualizarEndereco("fulano", "Sem nome", 0, "inicio", "da colina", "onde tem");
             
-            fachGerente.cadastrarFuncionario("cigrano", null, "0002");
+            fachGerente.cadastrarFuncionario("cigrano", null, "0002", "cicrano");
             fachGerente.atualizarEndereco("cigrano", "vida longa", 0, "perto de", "qualquer", "coisa");
         } catch (FuncionarioJaExisteException | FuncionarioNaoExisteException e) {
             System.out.println(e.getMessage());

@@ -6,7 +6,7 @@
 package gui;
 
 import Negocio.excecoes.LoginIncorretoException;
-import fachada.FachadaFuncionario;
+import fachada.FachadaConvidado;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,8 +24,8 @@ import javafx.scene.control.TextField;
  *
  * @author Absinto
  */
-public class FXMLController implements Initializable {
-    FachadaFuncionario fachadaFuncionario = new FachadaFuncionario();
+public class LoginController implements Initializable {
+    FachadaConvidado fachadaConvidado = new FachadaConvidado();
     
     @FXML
     private Label msgErro;
@@ -41,7 +41,8 @@ public class FXMLController implements Initializable {
 
     public void handleLoginButton(ActionEvent event) throws IOException{
         try{
-            fachadaFuncionario.fazerLogin(loginTxt.getText(), senhaTxt.getText());
+             System.out.println(loginTxt.getText() + "  " + senhaTxt.getText());
+            fachadaConvidado.fazerLogin(loginTxt.getText(), senhaTxt.getText());
             Parent root = FXMLLoader.load(getClass().getResource("InicioFuncionario.fxml"));
             loginButton.getScene().setRoot(root);
         }catch(LoginIncorretoException e){
@@ -49,7 +50,7 @@ public class FXMLController implements Initializable {
         }
         
         
-        System.out.println(loginTxt.getText() + "  " + senhaTxt.getText());
+       
        
     }
 

@@ -9,10 +9,12 @@ public class Funcionario {
     private String senha;
     private boolean ehGerente;
 
-    public Funcionario(String nome, String dataNascimento, String numIdentidade) {
+    public Funcionario(String nome, String dataNascimento, String numIdentidade, String login) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.numIdentidade = numIdentidade;
+        this.login = login;
+        this.senha = "123";
     }
 
     public String getNome() {

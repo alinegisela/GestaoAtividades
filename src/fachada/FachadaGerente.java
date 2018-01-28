@@ -8,10 +8,12 @@ import Negocio.entidade.Funcionario;
 import Negocio.GerenciadorFuncionario;
 import Negocio.GerenciadorPonto;
 import Negocio.GerenciadorTarefa;
+import Negocio.Login;
 import Negocio.entidade.Ponto;
 import Negocio.entidade.Tarefa;
 import Negocio.excecoes.FuncionarioJaExisteException;
 import Negocio.excecoes.FuncionarioNaoExisteException;
+import Negocio.excecoes.LoginIncorretoException;
 import Negocio.excecoes.PontoCheioException;
 import Negocio.excecoes.TarefaJaExisteException;
 import Negocio.excecoes.TarefaNaoExisteException;
@@ -32,10 +34,10 @@ public class FachadaGerente {
         this.usuario = this.gerenciadorFuncionario.buscaGerente();
     }
     
-    
+  
     //===================================FUNCIONARIO==========================================
-    public void cadastrarFuncionario(String nome, String dataNascimento, String numIdentidade) throws FuncionarioJaExisteException{
-        Funcionario funcionario = new Funcionario(nome, dataNascimento, numIdentidade);
+    public void cadastrarFuncionario(String nome, String dataNascimento, String numIdentidade, String login) throws FuncionarioJaExisteException{
+        Funcionario funcionario = new Funcionario(nome, dataNascimento, numIdentidade, login);
         this.gerenciadorFuncionario.funcionarioExiste(funcionario);
         //return resp;
     }

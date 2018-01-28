@@ -10,7 +10,7 @@ public class RepositorioFuncionario {
     public RepositorioFuncionario() {
         this.listaFuncionario = new Funcionario[capacidade];
         this.indiceFuncionario = 0;
-        Funcionario admin = new Funcionario("admin", null, "0000");   //o primeiro usuario sem vai ser o admin do sistema
+        Funcionario admin = new Funcionario("admin", null, "0000", "admin");   //o primeiro usuario sem vai ser o admin do sistema
         admin.setEhGerente(true);
         adicionar(admin);                                             //depois modificar para o admin não ser inicializado aqui
     }
@@ -50,9 +50,7 @@ public class RepositorioFuncionario {
     //Usado para realizar o login do funcionário
     public Funcionario buscaFuncionarioLogin(String login) {
         Funcionario funcionario = null;
-        System.out.println(indiceFuncionario);
         for (int i = 0; i < indiceFuncionario; i++) {
-            this.listaFuncionario[0].setLogin("login");
             if (this.listaFuncionario[i].getLogin().equals(login)) {
                 funcionario = this.listaFuncionario[i];
                 break;

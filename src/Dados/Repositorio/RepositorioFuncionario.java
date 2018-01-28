@@ -1,4 +1,4 @@
-package Dados;
+package Dados.Repositorio;
 
 import Negocio.entidade.Funcionario;
 
@@ -40,6 +40,20 @@ public class RepositorioFuncionario {
         Funcionario funcionario = null;
         for (int i = 0; i < indiceFuncionario; i++) {
             if (this.listaFuncionario[i].getNome().equals(nome)) {
+                funcionario = this.listaFuncionario[i];
+                break;
+            }
+        }
+        return funcionario;
+    }
+    
+    //Usado para realizar o login do funcionário
+    public Funcionario buscaFuncionarioLogin(String login) {
+        Funcionario funcionario = null;
+        System.out.println(indiceFuncionario);
+        for (int i = 0; i < indiceFuncionario; i++) {
+            this.listaFuncionario[0].setLogin("login");
+            if (this.listaFuncionario[i].getLogin().equals(login)) {
                 funcionario = this.listaFuncionario[i];
                 break;
             }

@@ -1,12 +1,16 @@
 package fachada;
 
-import Dados.RepositorioPonto;
-import Dados.RepositorioTarefa;
+import Dados.Repositorio.RepositorioFuncionario;
+import Dados.Repositorio.RepositorioPonto;
+import Dados.Repositorio.RepositorioTarefa;
+import Negocio.GerenciadorFuncionario;
 import Negocio.entidade.Funcionario;
 import Negocio.GerenciadorPonto;
 import Negocio.GerenciadorTarefa;
+import Negocio.Login;
 import Negocio.entidade.Ponto;
 import Negocio.entidade.Tarefa;
+import Negocio.excecoes.LoginIncorretoException;
 import Negocio.excecoes.PontoCheioException;
 import Negocio.excecoes.TarefaNaoExisteException;
 import java.text.DateFormat;
@@ -14,14 +18,29 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class FachadaFuncionario {
-    private final Funcionario usuario;
+    private Funcionario usuario; // tirei o final para poder ter o construtor vazio
     private final GerenciadorPonto gerenciadorPonto;
     private final GerenciadorTarefa gerenciadorTarefa;
+    private final Login login;
     
     public FachadaFuncionario(Funcionario usuario, RepositorioPonto reposPonto, RepositorioTarefa reposTarefa) {
         this.gerenciadorPonto = new GerenciadorPonto(reposPonto);
         this.gerenciadorTarefa = new GerenciadorTarefa(reposTarefa);
+        this.login = new Login(new RepositorioFuncionario());
         this.usuario = usuario;
+    }
+    
+    //construtor vazio para inicializacao na GUI
+    public FachadaFuncionario(){
+        System.out.println("Inicializou o favuao");
+        this.gerenciadorPonto = new GerenciadorPonto(new RepositorioPonto());
+        this.gerenciadorTarefa = new GerenciadorTarefa(new RepositorioTarefa());
+        this.login = new Login(new RepositorioFuncionario());
+    }
+    
+    //Entrar no sistema
+    public void fazerLogin(String login, String senha) throws LoginIncorretoException{
+        this.login.fazerLogin(login, senha);
     }
     
     //=======================================PONTO==========================================

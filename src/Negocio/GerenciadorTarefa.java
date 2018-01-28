@@ -2,7 +2,7 @@ package Negocio;
 
 import Negocio.entidade.Funcionario;
 import Negocio.entidade.Tarefa;
-import Dados.RepositorioTarefa;
+import Dados.Repositorio.RepositorioTarefa;
 import Negocio.excecoes.TarefaJaExisteException;
 import Negocio.excecoes.TarefaNaoExisteException;
 
@@ -26,7 +26,7 @@ public class GerenciadorTarefa {
         Tarefa[] listaTarefa = repositorioTarefa.buscarTarefaPendente(funcionario);
         
         //existe pelo menos uma tarefa associada ao funcionário
-        if(listaTarefa[0] != null){
+        if(listaTarefa != null){
             return listaTarefa;
         }else{
             throw new TarefaNaoExisteException();

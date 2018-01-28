@@ -4,9 +4,9 @@ import Negocio.entidade.Tarefa;
 import Negocio.entidade.Funcionario;
 import fachada.FachadaGerente;
 import fachada.FachadaFuncionario;
-import Dados.RepositorioFuncionario;
-import Dados.RepositorioPonto;
-import Dados.RepositorioTarefa;
+import Dados.Repositorio.RepositorioFuncionario;
+import Dados.Repositorio.RepositorioPonto;
+import Dados.Repositorio.RepositorioTarefa;
 import Negocio.excecoes.FuncionarioJaExisteException;
 import Negocio.excecoes.FuncionarioNaoExisteException;
 import Negocio.excecoes.PontoCheioException;
@@ -26,16 +26,16 @@ public class ClasseTesteSistema {
         try {
             fachGerente.cadastrarFuncionario("fulano", null, "0001");
             fachGerente.atualizarEndereco("fulano", "Sem nome", 0, "inicio", "da colina", "onde tem");
-
+            
             fachGerente.cadastrarFuncionario("cigrano", null, "0002");
             fachGerente.atualizarEndereco("cigrano", "vida longa", 0, "perto de", "qualquer", "coisa");
         } catch (FuncionarioJaExisteException | FuncionarioNaoExisteException e) {
             System.out.println(e.getMessage());
         }
 
-        Funcionario func = reposFuncionario.buscaFuncionarioNome("cigrano");
+        Funcionario func = reposFuncionario.buscaFuncionarioNome("admin");
         FachadaFuncionario fachFuncionario = new FachadaFuncionario(func, reposPonto, reposTarefa);
-
+       
         try {
             fachGerente.cadastrarTarefa("fulano", "fazer tal", "20/01/2018", "21/01/2018");
             fachGerente.cadastrarTarefa("cigrano", "fazer tal2", "20/01/2018", "21/01/2018");

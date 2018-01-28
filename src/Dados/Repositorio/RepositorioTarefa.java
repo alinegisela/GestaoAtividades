@@ -1,4 +1,4 @@
-package Dados;
+package Dados.Repositorio;
 
 import Negocio.entidade.Funcionario;
 import Negocio.entidade.Tarefa;
@@ -22,7 +22,6 @@ public class RepositorioTarefa {
         }
         return resp;
     }
-
     
     public Tarefa[] buscarTarefaPendente(Funcionario funcionario) {
         int cont = 0;
@@ -42,7 +41,6 @@ public class RepositorioTarefa {
         }
         return tarefa;
     }
-    
     
     public Tarefa buscarTarefa(Tarefa tarefa){
         for(int i=0;i<indiceTarefa;i++){

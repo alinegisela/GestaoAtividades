@@ -1,8 +1,8 @@
 package fachada;
 
-import Dados.RepositorioFuncionario;
-import Dados.RepositorioPonto;
-import Dados.RepositorioTarefa;
+import Dados.Repositorio.RepositorioFuncionario;
+import Dados.Repositorio.RepositorioPonto;
+import Dados.Repositorio.RepositorioTarefa;
 import Negocio.entidade.Endereco;
 import Negocio.entidade.Funcionario;
 import Negocio.GerenciadorFuncionario;

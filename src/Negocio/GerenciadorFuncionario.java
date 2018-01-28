@@ -1,9 +1,10 @@
 package Negocio;
 
 import Negocio.entidade.Funcionario;
-import Dados.RepositorioFuncionario;
+import Dados.Repositorio.RepositorioFuncionario;
 import Negocio.excecoes.FuncionarioJaExisteException;
 import Negocio.excecoes.FuncionarioNaoExisteException;
+import Negocio.excecoes.LoginIncorretoException;
 
 public class GerenciadorFuncionario {
     private final RepositorioFuncionario repositorioFuncionario;

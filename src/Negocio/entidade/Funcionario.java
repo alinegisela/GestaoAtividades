@@ -59,6 +59,13 @@ public class Funcionario {
         this.ehGerente = ehGerente;
     }
 
+    public boolean autenticar(String login, String senha){
+        if(this.getLogin().equals(login) && this.getSenha().equals(senha)){
+            return true;
+        }
+        return false;
+    }
+    
     @Override
     public String toString() {
         return "Funcionario [nome=" + getNome() + ", dataNascimento=" + getDataNascimento() + ", numIdentidade=" + getNumIdentidade() + ", " + getEndereco() + ", ehGerente=" + isEhGerente() + "]";

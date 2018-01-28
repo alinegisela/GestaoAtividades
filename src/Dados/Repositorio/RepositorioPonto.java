@@ -1,4 +1,4 @@
-package Dados;
+package Dados.Repositorio;
 
 import Negocio.entidade.Funcionario;
 import Negocio.entidade.Ponto;

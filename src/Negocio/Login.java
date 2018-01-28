@@ -21,12 +21,14 @@ public class Login {
         this.repositorioFuncionario = repositorioFuncionario;
     }
 
-    public void fazerLogin(String login, String senha) throws LoginIncorretoException {
+    public Funcionario fazerLogin(String login, String senha) throws LoginIncorretoException {
         Funcionario funcionario = this.repositorioFuncionario.buscaFuncionarioLogin(login);
 
         if (funcionario == null || !funcionario.autenticar(login, senha)) {
             throw new LoginIncorretoException();
         }
+        
+        return funcionario;
 
     }
 }

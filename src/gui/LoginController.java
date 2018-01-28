@@ -41,8 +41,9 @@ public class LoginController implements Initializable {
 
     public void handleLoginButton(ActionEvent event) throws IOException{
         try{
-             System.out.println(loginTxt.getText() + "  " + senhaTxt.getText());
-            fachadaConvidado.fazerLogin(loginTxt.getText(), senhaTxt.getText());
+            System.out.println(loginTxt.getText() + "  " + senhaTxt.getText());
+            InicioFuncionarioController.usuarioLogado = fachadaConvidado.fazerLogin(loginTxt.getText(), senhaTxt.getText());
+            
             Parent root = FXMLLoader.load(getClass().getResource("InicioFuncionario.fxml"));
             loginButton.getScene().setRoot(root);
         }catch(LoginIncorretoException e){

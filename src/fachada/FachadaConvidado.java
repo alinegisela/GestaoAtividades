@@ -5,6 +5,7 @@ package fachada;
 
 import Dados.Repositorio.RepositorioFuncionario;
 import Negocio.Login;
+import Negocio.entidade.Funcionario;
 import Negocio.excecoes.LoginIncorretoException;
 
 public class FachadaConvidado {
@@ -15,7 +16,7 @@ public class FachadaConvidado {
     }
     
      //Entrar no sistema
-    public void fazerLogin(String login, String senha) throws LoginIncorretoException{
-        this.login.fazerLogin(login, senha);
+    public Funcionario fazerLogin(String login, String senha) throws LoginIncorretoException{
+        return this.login.fazerLogin(login, senha);
     }
 }

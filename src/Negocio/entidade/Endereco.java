@@ -1,4 +1,4 @@
-package Negocio;
+package Negocio.entidade;
 
 public class Endereco {
     private String rua;

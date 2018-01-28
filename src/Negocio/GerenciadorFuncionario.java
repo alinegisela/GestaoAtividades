@@ -1,5 +1,6 @@
 package Negocio;
 
+import Negocio.entidade.Funcionario;
 import Dados.RepositorioFuncionario;
 import Negocio.excecoes.FuncionarioJaExisteException;
 import Negocio.excecoes.FuncionarioNaoExisteException;

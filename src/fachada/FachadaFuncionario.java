@@ -2,11 +2,11 @@ package fachada;
 
 import Dados.RepositorioPonto;
 import Dados.RepositorioTarefa;
-import Negocio.Funcionario;
+import Negocio.entidade.Funcionario;
 import Negocio.GerenciadorPonto;
 import Negocio.GerenciadorTarefa;
-import Negocio.Ponto;
-import Negocio.Tarefa;
+import Negocio.entidade.Ponto;
+import Negocio.entidade.Tarefa;
 import Negocio.excecoes.PontoCheioException;
 import Negocio.excecoes.TarefaNaoExisteException;
 import java.text.DateFormat;

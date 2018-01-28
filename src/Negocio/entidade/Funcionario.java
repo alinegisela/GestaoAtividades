@@ -1,4 +1,4 @@
-package Negocio;
+package Negocio.entidade;
 
 public class Funcionario {
     private final String nome;

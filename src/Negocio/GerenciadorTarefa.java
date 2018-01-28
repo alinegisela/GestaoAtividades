@@ -1,5 +1,7 @@
 package Negocio;
 
+import Negocio.entidade.Funcionario;
+import Negocio.entidade.Tarefa;
 import Dados.RepositorioTarefa;
 import Negocio.excecoes.TarefaJaExisteException;
 import Negocio.excecoes.TarefaNaoExisteException;

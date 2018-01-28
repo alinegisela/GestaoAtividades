@@ -1,4 +1,4 @@
-package Negocio;
+package Negocio.entidade;
 
 import java.util.Date;
 

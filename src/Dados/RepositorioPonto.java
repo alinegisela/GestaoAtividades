@@ -1,7 +1,7 @@
 package Dados;
 
-import Negocio.Funcionario;
-import Negocio.Ponto;
+import Negocio.entidade.Funcionario;
+import Negocio.entidade.Ponto;
 
 public class RepositorioPonto {
     private final int capacidade = 50;

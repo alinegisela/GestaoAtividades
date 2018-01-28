@@ -1,5 +1,7 @@
 package Negocio;
 
+import Negocio.entidade.Tarefa;
+import Negocio.entidade.Funcionario;
 import fachada.FachadaGerente;
 import fachada.FachadaFuncionario;
 import Dados.RepositorioFuncionario;

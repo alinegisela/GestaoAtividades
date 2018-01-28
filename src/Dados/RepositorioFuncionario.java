@@ -1,6 +1,6 @@
 package Dados;
 
-import Negocio.Funcionario;
+import Negocio.entidade.Funcionario;
 
 public class RepositorioFuncionario {
     private final int capacidade = 50;

@@ -1,5 +1,6 @@
 package Negocio;
 
+import Negocio.entidade.Ponto;
 import Dados.RepositorioPonto;
 import Negocio.excecoes.PontoCheioException;
 import java.text.SimpleDateFormat;

@@ -16,6 +16,10 @@ public class TimelineTarefa {
     public void setDataMarcaFuncionario() {
         this.dataMarcaFuncionario = new Date();
     }
+    
+    public void setDataMarcaFuncionario(Date data) {
+        this.dataMarcaFuncionario = data;
+    }
 
     public Date getDataMarcaGerente() {
         return dataMarcaGerente;
@@ -23,6 +27,10 @@ public class TimelineTarefa {
 
     public void setDataMarcaGerente() {
         this.dataMarcaGerente = new Date();
+    }
+    
+    public void setDataMarcaGerente(Date data) {
+        this.dataMarcaGerente = data;
     }
 
     public String getTag() {

@@ -7,11 +7,15 @@ import fachada.FachadaFuncionario;
 import Dados.Repositorio.RepositorioFuncionario;
 import Dados.Repositorio.RepositorioPonto;
 import Dados.Repositorio.RepositorioTarefa;
+import Dados.UploadDownload.DownloadFuncionario;
+import Dados.UploadDownload.DownloadPonto;
+import Dados.UploadDownload.DownloadTarefa;
 import Negocio.excecoes.FuncionarioJaExisteException;
 import Negocio.excecoes.FuncionarioNaoExisteException;
 import Negocio.excecoes.PontoCheioException;
 import Negocio.excecoes.TarefaJaExisteException;
 import Negocio.excecoes.TarefaNaoExisteException;
+
 
 
 public class ClasseTesteSistema {
@@ -21,7 +25,7 @@ public class ClasseTesteSistema {
         RepositorioPonto reposPonto = new RepositorioPonto();
         RepositorioTarefa reposTarefa = new RepositorioTarefa();
 
-        FachadaGerente fachGerente = new FachadaGerente(reposFuncionario, reposPonto, reposTarefa);
+        FachadaGerente fachGerente = new FachadaGerente();
 
         try {
             fachGerente.cadastrarFuncionario("fulano", null, "0001", "fulano");
@@ -33,8 +37,8 @@ public class ClasseTesteSistema {
             System.out.println(e.getMessage());
         }
 
-        Funcionario func = reposFuncionario.buscaFuncionarioNome("admin");
-        FachadaFuncionario fachFuncionario = new FachadaFuncionario(func, reposPonto, reposTarefa);
+        Funcionario func = fachGerente.buscaFuncionarioNome("cigrano");
+        FachadaFuncionario fachFuncionario = new FachadaFuncionario();
        
         try {
             fachGerente.cadastrarTarefa("fulano", "fazer tal", "20/01/2018", "21/01/2018");
@@ -60,6 +64,7 @@ public class ClasseTesteSistema {
 
         try {
             Tarefa[] listaTarefa = fachFuncionario.buscarTarefaPendente();
+            System.out.println(listaTarefa.length);
             fachFuncionario.editarTarefa(listaTarefa[1]);
             fachGerente.editarTarefa(listaTarefa[1]);
 
@@ -73,6 +78,7 @@ public class ClasseTesteSistema {
             System.out.println(e.getMessage());
         }
 
+        
         System.out.println("=================RepositorioFuncionario=================");
         reposFuncionario.exibirObjetos();
         System.out.println("=================RepositorioPonto=================");
@@ -80,6 +86,6 @@ public class ClasseTesteSistema {
         System.out.println("=================RepositorioTarefa=================");
         reposTarefa.exibirObjetos();
 
-        //depois revisar TimelineTarefa e Tarefa (pequenos detalhes de logica), para verificar se esta funcionando como esperado
+        
     }
 }

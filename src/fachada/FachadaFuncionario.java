@@ -12,25 +12,36 @@ import Negocio.entidade.Tarefa;
 import Negocio.excecoes.PontoCheioException;
 import Negocio.excecoes.TarefaNaoExisteException;
 import java.text.DateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class FachadaFuncionario {
-    private final Funcionario usuario; 
+    private Funcionario usuarioLogado; 
     private final GerenciadorPonto gerenciadorPonto;
     private final GerenciadorTarefa gerenciadorTarefa;
     
-    public FachadaFuncionario(Funcionario usuario, RepositorioPonto reposPonto, RepositorioTarefa reposTarefa) {
-        this.gerenciadorPonto = new GerenciadorPonto(reposPonto);
-        this.gerenciadorTarefa = new GerenciadorTarefa(reposTarefa);
-        this.usuario = usuario;
+    public FachadaFuncionario() {
+        this.gerenciadorPonto = new GerenciadorPonto(Fachada.reposPonto);
+        this.gerenciadorTarefa = new GerenciadorTarefa(Fachada.reposTarefa);
     }
+
+    public Funcionario getUsuario() {
+        return usuarioLogado;
+    }
+
+    public void setUsuario(Funcionario usuario) {
+        this.usuarioLogado = usuario;
+    }
+    
+    
    
     //=======================================PONTO==========================================
     public void baterPonto() throws PontoCheioException {
         //tratar erro contra bater o ponto mais de 4 vezes
         String data = stringDataAtual();
-        Ponto ponto = new Ponto(this.usuario, data);
+        Ponto ponto = new Ponto(this.usuarioLogado, data);
         this.gerenciadorPonto.baterPonto(ponto);
     }
     
@@ -46,9 +57,10 @@ public class FachadaFuncionario {
     
     
     //=====================================TAREFA===============================================
-    public Tarefa[] buscarTarefaPendente() throws TarefaNaoExisteException {
-        Tarefa[] listaTarefa = this.gerenciadorTarefa.buscarTarefaPendente(this.usuario);
-        return listaTarefa;
+    public List<Tarefa> buscarTarefaPendente() throws TarefaNaoExisteException {
+        Tarefa[] listaTarefa = this.gerenciadorTarefa.buscarTarefaPendente(this.usuarioLogado);
+        List<Tarefa> lista = Arrays.asList(listaTarefa);
+        return lista;
     }
     
     public void editarTarefa(Tarefa tarefa) throws TarefaNaoExisteException{
@@ -63,4 +75,14 @@ public class FachadaFuncionario {
         this.gerenciadorTarefa.adicionarNotaFuncionario(nota);
     }
     //========================================================================================
+
+    public GerenciadorPonto getGerenciadorPonto() {
+        return gerenciadorPonto;
+    }
+
+    public GerenciadorTarefa getGerenciadorTarefa() {
+        return gerenciadorTarefa;
+    }
+    
+    
 }

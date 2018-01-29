@@ -1,5 +1,8 @@
 package Negocio.entidade;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Tarefa {
     private Funcionario responsavel;
     private String descricao;
@@ -9,6 +12,8 @@ public class Tarefa {
     private int indiceTimeline;
     private boolean marcaFinalizadoFuncionario;
     private boolean marcaFinalizadoGerente;
+    private String s;
+    StringProperty status;
 
     public Tarefa(Funcionario resposavel, String descricao, String dataInicio, String dataTermino) {
         this.responsavel = resposavel;
@@ -18,6 +23,11 @@ public class Tarefa {
         this.timelineTarefa = new TimelineTarefa[5];
         this.indiceTimeline = 0;
         this.timelineTarefa[indiceTimeline] = new TimelineTarefa();
+        this.marcaFinalizadoFuncionario = false;
+        this.marcaFinalizadoGerente = false;
+        status = new SimpleStringProperty();
+        status.set("Em andamento");
+        
     }
 
     public Funcionario getResponsavel() {
@@ -40,6 +50,10 @@ public class Tarefa {
         return dataInicio;
     }
 
+    public void setTimelineTarefa(TimelineTarefa[] timelineTarefa) {
+        this.timelineTarefa = timelineTarefa;
+    }
+
     public void setDataInicio(String dataInicio) {
         this.dataInicio = dataInicio;
     }
@@ -52,6 +66,18 @@ public class Tarefa {
         this.dataTermino = dataTermino;
     }
 
+    public TimelineTarefa[] getTimelineTarefa() {
+        return timelineTarefa;
+    }
+
+    public int getIndiceTimeline() {
+        return indiceTimeline;
+    }
+
+    public void setIndiceTimeline(int indice) {
+        this.indiceTimeline = indice;
+    }
+
     public boolean getMarcaFinalizadoFuncionario() {
         return marcaFinalizadoFuncionario;
     }
@@ -59,6 +85,7 @@ public class Tarefa {
     public void setMarcaFinalizadoFuncionario(boolean MarcaFinalizadoFuncionario) {
         this.marcaFinalizadoFuncionario = MarcaFinalizadoFuncionario;
         if (MarcaFinalizadoFuncionario == true) {
+            status.set("Realizada");
             if (this.timelineTarefa[this.indiceTimeline].getDataMarcaFuncionario() == null) {
                 this.timelineTarefa[this.indiceTimeline].setDataMarcaFuncionario();
             }
@@ -73,6 +100,8 @@ public class Tarefa {
                 this.timelineTarefa[this.indiceTimeline].setDataMarcaGerente();
             }
         }
+        
+        
     }
 
     public boolean getMarcaFinalizadoGerente() {
@@ -81,6 +110,9 @@ public class Tarefa {
 
     public void setMarcaFinalizadoGerente(boolean marcaFinalizadoGerente) {
         this.marcaFinalizadoGerente = marcaFinalizadoGerente;
+        if(this.marcaFinalizadoGerente){
+            status.set("Concluída");
+        }
         this.timelineTarefa[this.indiceTimeline].setDataMarcaGerente();
     }
     
@@ -98,6 +130,19 @@ public class Tarefa {
         this.timelineTarefa[this.indiceTimeline].setNotaGerente(nota);
     }
 
+    public StringProperty getPStatus() {
+        return status;
+    }
+    
+    public String getStatus(){
+        return status.get();
+    }
+    public void setStatus(StringProperty status) {
+        this.status = status;
+    }
+
+    
+    
     @Override
     public String toString() {
         for (int i = 0; i < 5; i++) {

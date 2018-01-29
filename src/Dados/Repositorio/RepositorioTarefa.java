@@ -20,6 +20,11 @@ public class RepositorioTarefa {
             indiceTarefa++;
             resp = true;
         }
+        
+        //====TESTE
+        if(resp){
+            System.out.println("Tarefa cadastrada");
+        }
         return resp;
     }
     
@@ -27,6 +32,7 @@ public class RepositorioTarefa {
         int cont = 0;
         for(int i = 0; i < indiceTarefa; i++) {
             if (listaTarefa[i].getResponsavel().equals(funcionario) && listaTarefa[i].getMarcaFinalizadoGerente() == false) {
+                System.out.println("é pra aplaudir de pé irmãos");
                 cont ++;
             }
         }
@@ -35,6 +41,7 @@ public class RepositorioTarefa {
         cont = 0;
         for(int i = 0; i < indiceTarefa; i++) {
             if (listaTarefa[i].getResponsavel().equals(funcionario) && listaTarefa[i].getMarcaFinalizadoGerente() == false) {
+                System.out.println("adddd pro array");
                 tarefa[cont] = listaTarefa[i];
                 cont ++;
             }
@@ -51,6 +58,14 @@ public class RepositorioTarefa {
         return null;
     }
 
+    public Tarefa[] returnListaTarefa() {
+        Tarefa[] lista = new Tarefa[indiceTarefa];
+        for (int i = 0; i < this.indiceTarefa; i++) {
+            lista[i] = this.listaTarefa[i];
+        }
+        return lista;
+    }
+    
     /*
     public Tarefa buscarTarefaFuncionario(Funcionario funcionario) {
         Tarefa tarefa = null;

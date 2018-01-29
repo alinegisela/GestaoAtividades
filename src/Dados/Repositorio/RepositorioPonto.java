@@ -35,6 +35,14 @@ public class RepositorioPonto {
         return ponto;
     }
     
+    public Ponto[] returnListaPonto() {
+        Ponto[] lista = new Ponto[indicePonto];
+        for (int i = 0; i < this.indicePonto; i++) {
+            lista[i] = this.listaPonto[i];
+        }
+        return lista;
+    }
+    
     /*
     public Ponto[] retornarPontosMensais(Funcionario funcionario, int mes, int ano) {
         int cont = 0;

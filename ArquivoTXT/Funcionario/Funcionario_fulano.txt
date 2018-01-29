@@ -1,0 +1,1 @@
+fulano|null|0001|Sem nome|0|inicio|da colina|onde tem|fulano|123|false|

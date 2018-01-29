@@ -27,6 +27,7 @@ public class GerenciadorTarefa {
         
         //existe pelo menos uma tarefa associada ao funcionário
         if(listaTarefa != null){
+            System.out.println("======== " + listaTarefa[0]);
             return listaTarefa;
         }else{
             throw new TarefaNaoExisteException();
@@ -42,7 +43,9 @@ public class GerenciadorTarefa {
     public void marcarFinalizadaFuncionario() {
         if (this.tarefa.getMarcaFinalizadoFuncionario() == false) {
             this.tarefa.setMarcaFinalizadoFuncionario(true);
+            System.out.println("marquei");
         }
+        
     }
     
     public void marcarFinalizadaGerente() {
@@ -66,4 +69,16 @@ public class GerenciadorTarefa {
     public void adicionarNotaGerente(String nota) {
         this.tarefa.adicionarNotaGerente(nota);
     }
+
+    public Tarefa getTarefa() {
+        return tarefa;
+    }
+
+    public void setTarefa(Tarefa tarefa) {
+        this.tarefa = tarefa;
+    }
+    
+    
+    
+    
 }

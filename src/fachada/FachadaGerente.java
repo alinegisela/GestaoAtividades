@@ -27,10 +27,10 @@ public class FachadaGerente {
     private final GerenciadorPonto gerenciadorPonto;
     private final GerenciadorTarefa gerenciadorTarefa;
     
-    public FachadaGerente(RepositorioFuncionario reposFuncionario, RepositorioPonto reposPonto, RepositorioTarefa reposTarefa) {
-        this.gerenciadorFuncionario = new GerenciadorFuncionario(reposFuncionario);
-        this.gerenciadorPonto = new GerenciadorPonto(reposPonto);
-        this.gerenciadorTarefa = new GerenciadorTarefa(reposTarefa);
+    public FachadaGerente() {
+        this.gerenciadorFuncionario = new GerenciadorFuncionario(Fachada.reposFuncionario);
+        this.gerenciadorPonto = new GerenciadorPonto(Fachada.reposPonto);
+        this.gerenciadorTarefa = new GerenciadorTarefa(Fachada.reposTarefa);
         this.usuario = this.gerenciadorFuncionario.buscaGerente();
     }
     
@@ -47,10 +47,14 @@ public class FachadaGerente {
         Endereco endereco = new Endereco(rua, numero, bairro, cidade, estado);
         funcionario.setEndereco(endereco);
     }
+    
+    public Funcionario buscaFuncionarioNome(String nome) throws FuncionarioNaoExisteException{
+       return this.gerenciadorFuncionario.buscaFuncionarioNome(nome);
+    }
     //========================================================================================
     
     
-    //=======================================PONTO==========================================
+//=======================================PONTO==========================================
     public void baterPonto() throws PontoCheioException {
         //tratar erro contra bater o ponto mais de 4 vezes
         String data = stringDataAtual();
@@ -71,8 +75,8 @@ public class FachadaGerente {
     
     //=====================================TAREFA===============================================
     public void cadastrarTarefa(String nomeFuncionario, String descricao, String dataInicio, String dataTermino) throws FuncionarioNaoExisteException, TarefaJaExisteException {
-        Funcionario resposavel = this.gerenciadorFuncionario.buscaFuncionarioNome(nomeFuncionario);
-        Tarefa tarefa = new Tarefa(resposavel, descricao, dataInicio, dataTermino);
+        Funcionario responsavel = this.gerenciadorFuncionario.buscaFuncionarioNome(nomeFuncionario);
+        Tarefa tarefa = new Tarefa(responsavel, descricao, dataInicio, dataTermino);
         this.gerenciadorTarefa.registraTarefa(tarefa);
     }
     
